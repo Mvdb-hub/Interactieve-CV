@@ -1,10 +1,12 @@
 ﻿@page
-@model IndexModel
+@model InteractiveCvAspCore.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Index</h1>
+
+@Html.DisplayFor(model => model.FirstPerson.Name)
+@Html.DisplayFor(model => model.FirstPerson.Educations.First().Description)
+@Html.DisplayFor(model => model.AbilityCategories.First().Description)
+
