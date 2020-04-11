@@ -16,15 +16,15 @@ namespace InteractiveCvAspCore.Data
                 return;   // DB has been seeded
             }
 
-            var person = new Person { Name = "Miguel Vanden Broucke", Birthday = DateTime.Parse("1986-03-14"), AboutMe = "Over mij.", Location = "Brugge", EmailAddress = "emailadres", };
+            var person = new Person { Name = "Full Name", Birthday = DateTime.Parse("1986-03-14"), AboutMe = "About me text", Location = "City, Country", EmailAddress = "Emailaddress" };
             context.Person.Add(person);
             context.SaveChanges();
 
-            var education = new PersonEducation { PersonID = 1, SchoolName = "Ivo Brugge", Course = "Graduaat Informatica", Location = "Brugge", StartDate = DateTime.Parse("2010-09-01"), EndDate = DateTime.Parse("2013-6-30") };
+            var education = new PersonEducation { PersonID = 1, SchoolName = "School Name", Course = "Course Title",Description="Course Description", Location = "City, Country", StartDate = DateTime.Parse("2010-09-01"), EndDate = DateTime.Parse("2013-6-30") };
             context.PersonEducation.Add(education);
             context.SaveChanges();
 
-            var experience = new PersonExperience { PersonID = 1, CompanyName = "Compufit", Function = ".Net Developer", Location = "Oostende", StartDate = DateTime.Parse("2013-09-01"), EndDate = DateTime.Parse("2015-6-30"), WebsiteUrl = "www.Compufit.be", Description = "Ontwikkelen van C# apps." };
+            var experience = new PersonExperience { PersonID = 1, CompanyName = "Company Name", Function = "Function Title", Location = "City, Country", StartDate = DateTime.Parse("2013-09-01"), EndDate = DateTime.Parse("2015-6-30"), WebsiteUrl = "www.company.be", Description = "Function Description" };
             context.PersonExperience.Add(experience);
             context.SaveChanges();
 

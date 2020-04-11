@@ -40,7 +40,7 @@ namespace InteractiveCvAspCore.Pages
 
             AbilityCategories = await _context.AbilityCategory.ToListAsync();
 
-            PersonAge = 34; //create calculate age function
+            PersonAge = 34; //create calculate age function in Person Model
             if (FirstPerson == null)
             {
                 return NotFound();
