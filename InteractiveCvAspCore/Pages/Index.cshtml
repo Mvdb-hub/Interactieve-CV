@@ -3,11 +3,82 @@
 @{
     ViewData["Title"] = "Home";
 }
-<div class="container">
-<h1>Index</h1>
+<div id="profile" class="container">
+        <div class="border-bottom section-header-container">
+            <h2 class="display-4 main-color">Profiel</h2>
+            <p class="lead">Ik ben een Microsoft .NET ontwikkelaar</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 text-center text-md-left">
+                <h2 class="main-color">Over mij</h2>
+                <p>
+                    @Html.DisplayFor(model => model.FirstPerson.AboutMe)
+                </p>
+            </div>
+            <div class="col-lg-4 text-center pt-2 pb-2">
+                <img class="rounded-circle profileImg" alt="100x100" src="@Html.DisplayFor(model => model.FirstPerson.ImageUrl)" data-holder-rendered="true">
+            </div>
+            <div class="col-lg-4 text-center text-md-left">
+                <h2 class="main-color">Details</h2>
+                <dl>
+                    <dt class="col-sm-12">Naam:</dt>
+                    <dd class="col-sm-12">@Html.DisplayFor(model => model.FirstPerson.Name)</dd>
+                    <dt class="col-sm-12">Leeftijd:</dt>
+                    <dd class="col-sm-12">@Html.DisplayFor(model => model.PersonAge)</dd>
+                    <dt class="col-sm-12">Locatie:</dt>
+                    <dd class="col-sm-12">@Html.DisplayFor(model => model.FirstPerson.Location)</dd>
+                </dl>
+                <span>
+                    <a href="https://twitter.com/mvdbroucke1?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-lang="nl" data-show-count="false">Volg mij</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </span>
+            </div>
+        </div>
+        <div class="w-100 text-center pt-5">
+            <p class="lead font-italic">Dit project is gebouwd in ASP.NET Core met Bootstrap en SQL-server.</p>
+            <a class="github-button" href="https://github.com/Mvdb-hub/Interactieve-CV" data-size="large" aria-label="Bekijk Mvdb-hub/Interactieve-CV op GitHub">Bekijk project op GitHub</a>
+        </div>
+</div>
+<div class="jumbotron-fluid">
+    <div id="experience" class="container">
+        <div class="border-bottom section-header-container">
+            <h2 class="display-4 main-color">Ervaringen</h2>
+            <p class="lead">"A strong mind looks forward, not backward."</p>
+        </div>
 
-@Html.DisplayFor(model => model.FirstPerson.Name)
-@Html.DisplayFor(model => model.FirstPerson.Educations.First().Description)
-@Html.DisplayFor(model => model.AbilityCategories.First().Description)
+        <h2 class="main-color text-lg-left">Opleidingen</h2>
+        @foreach (var item in Model.FirstPerson.Educations)
+        {
+            <div class="row pb-5">
+                <div class="col-lg-4 text-lg-left pb-3">
+                    <h4>@Html.DisplayFor(modelItem => item.SchoolName)</h4>
+                    <span>@String.Format("{0:MMM yyyy}", item.StartDate) - @String.Format("{0:MMM yyyy}", item.EndDate)</span>
+                </div>
+                <div class="col-lg-8 text-lg-left">
+                    <h6>@Html.DisplayFor(modelItem => item.Course)</h6>
+                    <span>@Html.DisplayFor(modelItem => item.Description)</span>
+                    <span class="main-color d-block pt-2"><i class="fa fa-location-arrow main-color"></i> @Html.DisplayFor(modelItem => item.Location)</span>
+                </div>
+            </div>
+        }
 
+        <h2 class="main-color text-lg-left">Werkervaring</h2>
+        @foreach (var item in Model.FirstPerson.Experiences)
+        {
+            <div class="row pb-5">
+                <div class="col-lg-4 text-lg-left pb-3">
+                    <h4>@Html.DisplayFor(modelItem => item.CompanyName)</h4>
+                    <span>@String.Format("{0:MMM yyyy}", item.StartDate) - @String.Format("{0:MMM yyyy}", item.EndDate)</span>
+                </div>
+                <div class="col-lg-8 text-lg-left">
+                    <h6>@Html.DisplayFor(modelItem => item.Function)</h6>
+                    <span>@Html.DisplayFor(modelItem => item.Description)</span>
+                    <span class="main-color d-block pt-2">
+                        <i class="fa fa-location-arrow main-color"></i> @Html.DisplayFor(modelItem => item.Location) |
+                        <a href="@Html.DisplayFor(modelItem => item.WebsiteUrl)"><i class="fa fa-link main-color"></i> @Html.DisplayFor(modelItem => item.WebsiteUrl)</a>
+                    </span>
+                </div>
+            </div>
+        }
+    </div>
 </div>

@@ -13,11 +13,11 @@
     <header>
         <div class="header-container">
             <div class="container header-text">
-                <h1 class="display-4 font-weight-bold">Miguel Vanden Broucke</h1>
+                <h1>Miguel Vanden Broucke</h1>
                 <p class="lead">Interactieve CV</p>
             </div>
-            <a href="#profile" class="scroll-down box-shadow">
-                <span class="fa fa-chevron-down bounce"></span>
+            <a href="#profile" class="scroll-down">
+                <i class="far fa-arrow-alt-circle-down bounce"></i>
             </a>
             <div class="header-overlay"></div>
         </div>
@@ -30,16 +30,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav nav mr-auto text-center">
                     <li class="nav-item  active">
-                        <a class="nav-link" href="#profile">Profiel</a>
+                        <a class="nav-link" href="#profile" data-toggle="collapse" data-target=".navbar-collapse.show">Profiel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#experience">Ervaring</a>
+                        <a class="nav-link" href="#experience" data-toggle="collapse" data-target=".navbar-collapse.show">Ervaring</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#ability">Competenties</a>
+                        <a class="nav-link" href="#ability" data-toggle="collapse" data-target=".navbar-collapse.show">Competenties</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#contact" data-toggle="collapse" data-target=".navbar-collapse.show">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -59,6 +59,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/font-awesome/css/fontawesome.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
