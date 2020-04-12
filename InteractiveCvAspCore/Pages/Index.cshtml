@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Home";
 }
-<div id="profile" class="container">
+<section id="profile" class="container">
         <div class="border-bottom section-header-container">
             <h2 class="display-4 main-color">Profiel</h2>
             <p class="lead">Ik ben een Microsoft .NET ontwikkelaar</p>
@@ -38,9 +38,10 @@
             <p class="lead font-italic">Dit project is gebouwd in ASP.NET Core met Bootstrap en SQL-server.</p>
             <a class="github-button" href="https://github.com/Mvdb-hub/Interactieve-CV" data-size="large" aria-label="Bekijk Mvdb-hub/Interactieve-CV op GitHub">Bekijk project op GitHub</a>
         </div>
-</div>
-<div class="jumbotron-fluid">
-    <div id="experience" class="container">
+</section>
+
+<section id="experiences" class="jumbotron-fluid">
+    <div class="container">
         <div class="border-bottom section-header-container">
             <h2 class="display-4 main-color">Ervaringen</h2>
             <p class="lead">"A strong mind looks forward, not backward."</p>
@@ -81,4 +82,139 @@
             </div>
         }
     </div>
-</div>
+</section>
+
+<section id="skills" class="container">
+    <div class="border-bottom section-header-container">
+        <h2 class="display-4 main-color">Competenties</h2>
+        <p class="lead">"Talk is cheap. Show me the code."</p>
+    </div>
+
+
+    @foreach (var category in Model.AbilityCategories)
+    {
+        <h3 class="main-color text-center text-md-left">@Html.DisplayFor(modelItem => category.Description)</h3>
+        <div class="row container-padding">
+            <div class="col-md-6">
+                <ul class="no-bullets">
+                    @{
+                        var abilityList = Model.FirstPerson.Abilities.Where(cat => cat.AbilityCategoryID == category.AbilityCategoryID);
+                        @foreach (var ability in abilityList.Take((abilityList.Count()+1) / 2))
+                        {
+
+                            <li>
+                                <span class="d-inline-block w-65">@Html.DisplayFor(modelItem => ability.Description)</span>
+                                @switch (ability.Score)
+                                {
+                                    case 1:
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        break;
+                                    case 2:
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        break;
+                                    case 3:
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        break;
+                                    case 4:
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        break;
+                                    case 5:
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        break;
+
+                                    default:
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        break;
+                                }
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="no-bullets">
+                    @{
+
+                        @foreach (var ability in abilityList.TakeLast(abilityList.Count() / 2))
+                        {
+                            <li>
+                                <span class="d-inline-block w-65">@Html.DisplayFor(modelItem => ability.Description)</span>
+                                @switch (ability.Score)
+                                {
+                                    case 1:
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        break;
+                                    case 2:
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        break;
+                                    case 3:
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        break;
+                                    case 4:
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        break;
+                                    case 5:
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        <span class="ability-score fa fa-star checked"></span>
+                                        break;
+
+                                    default:
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        <span class="ability-score fa fa-star"></span>
+                                        break;
+                                }
+                            </li>
+
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</section>

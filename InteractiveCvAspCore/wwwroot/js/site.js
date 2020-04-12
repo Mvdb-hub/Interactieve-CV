@@ -9,28 +9,46 @@ $(document).ready(function ()
         $(this).parent("li").addClass('active');
     });
 
-    // Add smooth scrolling to all links
-    $("a").on('click', function (event) {
+    // Add smooth scrolling to all links that start with 'href=#'
+    $('a[href^="#"]').on('click', function (event) {
 
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
             // Prevent default anchor click behavior
             event.preventDefault();
 
             // Store hash
             var hash = this.hash;
-            var offsetTop = $(hash).offset().top
 
             // Using jQuery's animate() method to add smooth page scroll
-            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
             $('html, body').animate({
-                scrollTop: offsetTop
+                scrollTop: $(hash).offset().top
             }, 500, function () {
 
                 // Add hash (#) to URL when done scrolling (default click behavior)
                 window.location.hash = hash;
             });
-        }
+    });
+
+
+
+    // change navbar active button on scrolling sections
+    let mainNavLinks = document.querySelectorAll("nav ul li a");
+    let mainSections = document.querySelectorAll("main section");
+
+    window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach(link => {
+            let section = document.querySelector(link.hash);
+
+            if (
+                section.offsetTop <= fromTop &&
+                section.offsetTop + section.offsetHeight > fromTop
+            ) {
+                $(link).parent("li").addClass('active');
+            } else {
+                $(link).parent("li").removeClass('active');
+            }
+        });
     });
 });
 
@@ -42,6 +60,7 @@ window.onscroll = function () {
 
 var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
+
 function MakeNavbarSticky() {
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("fixed-top");
@@ -49,3 +68,4 @@ function MakeNavbarSticky() {
         navbar.classList.remove("fixed-top");
     }
 }
+
